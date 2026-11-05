@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Задачи</title>
+<style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#243a32;background:#f4f5ef;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:wait;opacity:.55}button:focus-visible,input:focus-visible{outline:3px solid #dcb85d;outline-offset:4px}.app{max-width:1000px;margin:auto;padding:38px 28px 24px}.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:-.5px}.logo{background:#294e40;color:#fff;border-radius:12px;padding:8px 12px;font-size:20px}.top{display:flex;justify-content:space-between;align-items:center}.badge{font-size:12px;letter-spacing:1.5px;color:#6c7c6e}.hero{padding:64px 0 32px;position:relative}.eyebrow{font-size:12px;font-weight:700;letter-spacing:2px;color:#6c806b}h1{font-size:clamp(38px,7vw,64px);line-height:1.1;letter-spacing:-2.8px;margin:14px 0 18px;font-weight:650}.subtitle{color:#708076;font-size:16px;line-height:1.6;margin:0}.workspace{display:grid;grid-template-columns:1fr 240px;gap:24px;align-items:start}.panel{background:#fff;border:1px solid #e2e7df;border-radius:22px;overflow:hidden;box-shadow:0 14px 45px #294e4005}.entry{padding:24px;border-bottom:1px solid #edf0e9}.entry label{display:block;font-size:13px;font-weight:650;margin-bottom:12px}.form-row{display:flex;gap:10px}input{min-width:0;width:100%;border:1px solid #dfe5dc;border-radius:10px;padding:13px 14px;background:#fcfdf9;color:#243a32}input::placeholder{color:#8a968d}.primary{border:0;background:#294e40;color:white;border-radius:10px;padding:12px 18px;font-weight:600}.primary:hover{background:#38644f}.toolbar{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 10px;gap:12px}.filters{display:flex;gap:4px;flex-wrap:wrap}.filter{border:0;background:none;color:#7a867d;font-size:12px;padding:8px 10px;border-radius:8px}.filter[aria-pressed=true]{background:#edf2e9;color:#294e40;font-weight:650}.refresh{border:0;background:none;color:#677c6e;font-size:12px;padding:8px}.tasks{list-style:none;padding:0 24px;margin:0}.task{display:flex;gap:13px;align-items:center;padding:19px 0;border-bottom:1px solid #edf0e9}.task:last-child{border-bottom:0}.check{flex:0 0 23px;height:23px;border:1.5px solid #ced9cd;border-radius:50%;background:#fff;color:white;padding:0;line-height:20px}.done .check{background:#698563;border-color:#698563}.title{flex:1;min-width:0;overflow-wrap:anywhere;line-height:1.5;font-size:14px}.done .title{text-decoration:line-through;color:#95a092}.delete{background:none;border:0;color:#87958a;padding:6px 8px;font-size:19px;border-radius:6px}.delete:hover{background:#fff0eb;color:#b6503b}.empty{text-align:center;padding:42px 24px 48px;color:#7d8c7f;font-size:14px;line-height:1.7}.empty-symbol{font-size:28px;display:block;margin-bottom:12px;color:#698563}.bottom{border-top:1px solid #edf0e9;padding:15px 24px;color:#8b978b;font-size:11px;display:flex;justify-content:space-between;gap:10px}.aside{background:#e7eddf;border-radius:22px;padding:25px}.aside-label{font-size:11px;letter-spacing:1.8px;font-weight:700;color:#748567}.numbers{font-size:44px;font-weight:600;letter-spacing:-2px;margin:18px 0 10px}.numbers small{font-size:18px;color:#94a088;letter-spacing:0}.track{height:5px;background:#d2dcc8;border-radius:5px;overflow:hidden}.progress{height:100%;width:0;background:#698563;transition:width .3s}.aside p{font-size:12px;line-height:1.7;color:#758368;margin-bottom:0}.note{margin-top:24px;padding-top:20px;border-top:1px solid #cfdbc4}.note strong{display:block;font-size:14px;font-weight:600;margin-bottom:8px}.error{margin:0 0 18px;padding:14px 18px;border:1px solid #eed6cb;border-radius:12px;background:#fff4ed;color:#97462c;font-size:13px;line-height:1.6;overflow-wrap:anywhere}.error[hidden]{display:none}footer{padding:30px 0 0;font-size:11px;color:#97a08f;display:flex;justify-content:space-between} @media(max-width:680px){.app{padding:24px 18px}.hero{padding-top:42px}.workspace{grid-template-columns:1fr}.aside{order:2}.badge{display:none}.toolbar{padding:18px 16px 8px}.tasks{padding:0 18px}.entry{padding:20px}.aside .note{display:none}.numbers{margin:10px 0}.form-row{gap:8px}.primary{padding:12px 14px}footer{line-height:1.6;gap:16px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app">
+ <header class="top"><div class="brand"><span class="logo" aria-hidden="true">✓</span> тихий фокус</div><span class="badge">МЕНЬШЕ ШУМА. БОЛЬШЕ ДЕЛА.</span></header>
+ <section class="hero"><div class="eyebrow">ТВОЁ ПРОСТРАНСТВО ДЛЯ ДЕЛ</div><h1>Шаг за шагом.</h1><p class="subtitle">Освободи голову. Запиши задачу и начни с малого.</p></section>
+ <div id="error" class="error" role="alert" hidden></div>
+ <div class="workspace">
+ <section class="panel" aria-label="Задачи">
+  <form id="form" class="entry"><label for="title">Что нужно сделать?</label><div class="form-row"><input id="title" name="title" placeholder="Например, написать первый handler…" required autocomplete="off"><button id="add" class="primary" type="submit">Добавить</button></div></form>
+  <div class="toolbar"><div class="filters" aria-label="Фильтр задач"><button class="filter" data-filter="all" aria-pressed="true">Все</button><button class="filter" data-filter="active" aria-pressed="false">В работе</button><button class="filter" data-filter="done" aria-pressed="false">Готово</button></div><button id="refresh" class="refresh" type="button">↻ Обновить</button></div>
+  <ul id="tasks" class="tasks" aria-label="Список задач"></ul>
+  <div id="empty" class="empty" role="status"><span class="empty-symbol" aria-hidden="true">◌</span><span id="empty-text">Загружаем задачи…</span></div>
+  <div class="bottom"><span id="count">Подключаемся к серверу</span><span id="status" role="status" aria-live="polite"></span></div>
+ </section>
+ <aside class="aside"><div class="aside-label">ТВОЙ ПРОГРЕСС</div><div class="numbers"><span id="completed">0</span> <small>/ <span id="total">0</span></small></div><div class="track" role="progressbar" aria-label="Завершено задач" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress" class="progress"></div></div><p id="progress-text">Каждая выполненная задача — шаг вперёд.</p><div class="note"><strong>Одно дело за раз.</strong><p>Не обязательно успеть всё сегодня. Достаточно начать с того, что важно.</p></div></aside>
+ </div>
+ <footer><span>Место для важных и маленьких дел.</span><span>Сохраняется в твоём Go API</span></footer>
+</main>
+<script>
+'use strict';
+// API на том же Go-сервере. PATCH передаёт {completed: boolean}.
+const $ = id => document.getElementById(id);
+let tasks = [], filter = 'all', busy = false, loaded = false;
+function showError(message) { $('error').textContent = message; $('error').hidden = !message; }
+async function request(path, options = {}) {
+ const controller = new AbortController();
+ const timeout = setTimeout(() => controller.abort(), 15000);
+ try {
+  const response = await fetch(path, { ...options, signal: controller.signal, cache: 'no-store', headers: { Accept: 'application/json', ...(options.body ? {'Content-Type':'application/json'} : {}) } });
+  const raw = await response.text();
+  if (!response.ok) {
+   let detail = raw;
+   try { const data = JSON.parse(raw); detail = data.message || data.error || raw; } catch {}
+   throw new Error(`Сервер вернул ${response.status}${detail ? ': ' + String(detail).slice(0, 220) : ''}`);
+  }
+  return raw;
+ } catch (error) {
+  if (error.name === 'AbortError') throw new Error('Сервер не ответил за 15 секунд. Обнови список, чтобы проверить результат операции.');
+  if (error instanceof TypeError) throw new Error('Не удалось связаться с API. Открой страницу через Go-сервер и проверь, что он запущен.');
+  throw error;
+ } finally { clearTimeout(timeout); }
+}
+function render() {
+ const finished = tasks.filter(t => t.completed).length;
+ $('completed').textContent = finished; $('total').textContent = tasks.length;
+ const percent = tasks.length ? Math.round(finished / tasks.length * 100) : 0;
+ $('progress').style.width = percent + '%'; document.querySelector('[role=progressbar]').setAttribute('aria-valuenow', percent);
+ $('progress-text').textContent = tasks.length && finished === tasks.length ? 'Всё готово. Можно выдохнуть ✨' : 'Каждая выполненная задача — шаг вперёд.';
+ $('count').textContent = loaded ? `Осталось: ${tasks.length - finished} · Всего: ${tasks.length}` : 'Нет данных с сервера';
+ const visible = tasks.filter(t => filter === 'all' || (filter === 'done' ? t.completed : !t.completed));
+ $('tasks').replaceChildren();
+ for (const task of visible) {
+  const li = document.createElement('li'); li.className = 'task' + (task.completed ? ' done' : '');
+  const toggle = document.createElement('button'); toggle.type = 'button'; toggle.className = 'check'; toggle.textContent = task.completed ? '✓' : ''; toggle.setAttribute('aria-label', task.completed ? `Вернуть в работу: ${task.title}` : `Завершить: ${task.title}`); toggle.setAttribute('aria-pressed', String(task.completed)); toggle.disabled = busy;
+  toggle.onclick = () => mutate(`/tasks/${encodeURIComponent(task.id)}`, 'PATCH', {completed: !task.completed}, 'Статус задачи изменён');
+  const title = document.createElement('span'); title.className = 'title'; title.textContent = task.title;
+  const remove = document.createElement('button'); remove.type = 'button'; remove.className = 'delete'; remove.textContent = '×'; remove.setAttribute('aria-label', `Удалить: ${task.title}`); remove.disabled = busy;
+  remove.onclick = () => mutate(`/tasks/${encodeURIComponent(task.id)}`, 'DELETE', undefined, 'Задача удалена');
+  li.append(toggle, title, remove); $('tasks').append(li);
+ }
+ $('empty').hidden = visible.length > 0;
+ $('empty-text').textContent = !loaded ? 'Список недоступен. Нажми «Обновить», чтобы попробовать снова.' : tasks.length === 0 ? 'Пока чистый лист. Добавь свою первую задачу.' : filter === 'done' ? 'Выполненные задачи появятся здесь.' : 'Здесь всё сделано. Отличная работа!';
+ document.querySelectorAll('.filter').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === filter)));
+}
+function setBusy(value) { busy = value; $('add').disabled = value; $('refresh').disabled = value; $('title').disabled = value; $('tasks').setAttribute('aria-busy', String(value)); render(); }
+async function load() {
+ const raw = await request('/tasks');
+ let data;
+ try { data = JSON.parse(raw); } catch { throw new Error('GET /tasks вернул некорректный JSON.'); }
+ if (data === null) data = []; // Пустой nil-срез в Go кодируется как null.
+ if (!Array.isArray(data) || data.some(t => !t || !['number','string'].includes(typeof t.id) || typeof t.title !== 'string' || typeof t.completed !== 'boolean')) throw new Error('Ожидается массив задач с полями id, title и completed.');
+ tasks = data; loaded = true; render();
+}
+async function refresh() {
+ if (busy) return;
+ showError(''); setBusy(true); $('status').textContent = 'Загрузка…';
+ try { await load(); $('status').textContent = 'Список обновлён'; }
+ catch (error) { showError(error.message); $('status').textContent = 'Не удалось обновить'; }
+ finally { setBusy(false); }
+}
+async function mutate(path, method, body, message) {
+ if (busy) return;
+ showError(''); setBusy(true); $('status').textContent = 'Сохраняем…';
+ let saved = false;
+ try {
+  await request(path, {method, ...(body === undefined ? {} : {body: JSON.stringify(body)})}); saved = true;
+  if (method === 'POST') { $('title').value = ''; filter = 'all'; }
+  await load(); $('status').textContent = message;
+ } catch (error) { showError((saved ? 'Изменение сохранено, но список не обновился. Нажми «Обновить». ' : '') + error.message); $('status').textContent = saved ? 'Нужно обновить список' : 'Не удалось сохранить'; }
+ finally { setBusy(false); if (method === 'POST') $('title').focus(); }
+}
+$('form').addEventListener('submit', event => { event.preventDefault(); const title = $('title').value.trim(); if (!title) { $('title').setCustomValidity('Введи название задачи.'); $('title').reportValidity(); return; } mutate('/tasks', 'POST', {title}, 'Задача добавлена'); });
+$('title').addEventListener('input', () => $('title').setCustomValidity(''));
+$('refresh').onclick = refresh;
+document.querySelectorAll('.filter').forEach(button => button.onclick = () => { filter = button.dataset.filter; render(); });
+if (location.protocol === 'file:') { render(); showError('Этот файл нужно открыть через Go-сервер: например, http://localhost:8080/. При открытии двойным кликом API недоступен.'); }
+else refresh();
+</script>
+</body>
+</html>
